@@ -74,3 +74,128 @@ button,a,input,select,textarea{touch-action:manipulation}
 @media(max-width:760px){.pharmacy-home .hero{padding-top:30px;padding-bottom:36px;gap:28px}.pharmacy-home h1{font-size:46px;letter-spacing:-2.4px}.pharmacy-home .hero p{font-size:15px}.pharmacy-home .hero-product-showcase{border-radius:24px 56px 24px 24px;min-height:450px}.pharmacy-home .quick-bar{padding:22px 14px;gap:22px 12px}.pharmacy-home .quick-bar>div{padding:0;gap:10px}.pharmacy-home .line-icon{width:36px;height:36px;border-radius:11px;font-size:21px}.pharmacy-home .section{padding-top:46px;padding-bottom:46px}.pharmacy-home .category-card{padding:18px 12px;border-radius:18px}.pharmacy-home .category-caption h3{font-size:12px}.pharmacy-home .category-caption p{font-size:10px}.pharmacy-home .care-banner{padding:28px}.pharmacy-home .order-panel{padding:22px;border-radius:20px}.pharmacy-home .arrival-content .btn{font-size:11px;padding:11px 8px;min-height:42px}.pharmacy-home .field input,.pharmacy-home .field select,.pharmacy-home .field textarea{font-size:16px}.pharmacy-dashboard .grid{grid-template-columns:1fr}.pharmacy-dashboard .tabs{gap:5px}.pharmacy-dashboard .tabs button{flex:1 1 42%;font-size:12px}.pharmacy-dashboard .panel{padding:20px}.pharmacy-dashboard header{flex-direction:row;flex-wrap:wrap;align-items:center}.pharmacy-dashboard header>span{font-size:9px}.pharmacy-dashboard .dashboard-brand .pharmacy-logo{width:155px}.pharmacy-dashboard input,.pharmacy-dashboard select,.pharmacy-dashboard textarea,.pharmacy-tracking input{font-size:16px}.pharmacy-tracking header .pharmacy-logo{width:170px}.pharmacy-tracking header>a:last-child{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{.pharmacy-tracking{background:white}.pharmacy-tracking #result{box-shadow:none;border:0;border-radius:0}.pharmacy-tracking .total{background:#f2f5ed;print-color-adjust:exact;-webkit-print-color-adjust:exact}.pharmacy-tracking .quotation-brand{border-top:0}}
+
+/* Professional storefront layout — November 2026 */
+.pharmacy-home{--green:#115741;--ink:#183f34;--muted:#65796e;--cream:#fcfcf8;background:var(--cream)}
+.pharmacy-home .utility{background:#103e31}
+.pharmacy-home .utility-inner{padding-top:11px;padding-bottom:11px}
+.pharmacy-home .header-inner{padding-top:12px;padding-bottom:12px}
+.pharmacy-home .brand .pharmacy-logo{width:200px}
+.pharmacy-home nav{gap:19px}
+.pharmacy-home nav a:last-child{color:var(--green);font-weight:700}
+.pharmacy-home .hero{max-width:1150px;margin:28px auto 24px;padding:44px;gap:40px;grid-template-columns:1.05fr 1fr;border-radius:28px;background:#123f32;position:relative;overflow:hidden}
+.pharmacy-home .hero-copy{position:relative;z-index:1}
+.pharmacy-home .hero-copy>.pill{background:#ffffff0a;border-color:#ffffff30;color:#e0edc8;font-size:10px;letter-spacing:1.3px;padding:10px 12px}
+.pharmacy-home .hero-copy .dot{background:#d5e9a7}
+.pharmacy-home h1{color:#fffef6;font-size:clamp(42px,4.5vw,62px);line-height:1.1;font-weight:600;letter-spacing:-2.8px;margin:25px 0 22px}
+.pharmacy-home h1>span{color:#d0e5a8}
+.pharmacy-home .hero-copy>p{color:#d0dfd5;font-size:15px;line-height:1.8;max-width:420px}
+.pharmacy-home .hero-copy .btn{background:#d8eab2;border-color:#d8eab2;color:#183f34;font-weight:700;box-shadow:none}
+.pharmacy-home .hero-copy .btn:hover{background:#e8f3d3}
+.pharmacy-home .hero-copy .text-link{color:#fff;font-size:12px}
+.pharmacy-home .hero-divider{background:#ffffff26;margin:26px 0 17px}
+.pharmacy-home .location-note{color:#d0dfd5;font-size:12px;line-height:1.7}
+.pharmacy-home .hero-product-showcase{border-radius:20px;background:radial-gradient(ellipse at 50% 30%,#fffef9,#dfebd9);border:1px solid #ffffff30;box-shadow:none;min-height:460px;aspect-ratio:1/1.08}
+.pharmacy-home .hero-product-info{left:18px;right:18px;bottom:68px;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px #123f320a}
+.pharmacy-home .hero-product-info h2{font-size:23px;color:var(--ink)}
+.pharmacy-home .hero-product-info p{font-size:12px;line-height:1.6;margin:7px 0 12px;color:var(--muted)}
+.pharmacy-home .hero-product-image{padding:42px 28px 0;height:61%}
+.pharmacy-home .hero-showcase-top .pill{font-size:9px}
+.pharmacy-home .quick-bar{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:24px 0 30px}
+.pharmacy-home .quick-bar b{font-size:13px}
+.pharmacy-home .quick-bar small{font-size:11px;line-height:1.5}
+.pharmacy-home .line-icon{background:#edf3e7}
+.pharmacy-home .section{padding-top:64px;padding-bottom:64px}
+.pharmacy-home .section-head{margin-bottom:30px}
+.pharmacy-home h2{font-weight:600;letter-spacing:-1.3px}
+.pharmacy-home .section-head>p{font-size:14px;max-width:340px}
+.pharmacy-home .eyebrow{color:#627d55;font-size:10px;letter-spacing:1.6px}
+.pharmacy-home .category-card{border:1px solid #dfe7db;border-radius:16px;padding:20px;transition:transform .2s,box-shadow .2s}
+.pharmacy-home .category-card:hover{box-shadow:0 12px 24px #123f3210}
+.pharmacy-home .category-art{height:135px}
+.pharmacy-home .category-caption{margin-top:16px}
+.pharmacy-home .category-caption p{font-size:12px}
+.pharmacy-home .product-showcase{background:#f0f4ec;border-top:1px solid #e3e9dd;border-bottom:1px solid #e3e9dd}
+.pharmacy-home .arrival-card{border:1px solid #e0e7da;border-radius:16px;box-shadow:none}
+.pharmacy-home .arrival-content h3{font-size:17px;line-height:1.45}
+.pharmacy-home .arrival-content .btn{margin-top:18px}
+.pharmacy-home .showcase-filter{min-height:44px}
+.pharmacy-home .care-banner{margin-top:42px;border-radius:18px;background:#e7eedb;color:var(--ink);padding:30px 36px}
+.pharmacy-home .care-banner .eyebrow{color:#60764e}
+.pharmacy-home .care-banner h2{color:var(--ink)}
+.pharmacy-home .care-banner p{color:#52694e}
+.pharmacy-home .care-symbol{color:#89a270}
+.pharmacy-home .care-banner .btn{background:var(--green);border-color:var(--green);color:#fff}
+.pharmacy-home .order-layout{gap:7%;grid-template-columns:.9fr 1.1fr}
+.pharmacy-home .order-layout>div:first-child>p{font-size:15px;line-height:1.8}
+.pharmacy-home .steps li{font-size:14px;max-width:380px}
+.pharmacy-home .notice{font-size:12px;line-height:1.75}
+.pharmacy-home .order-panel{border-radius:18px;padding:30px;box-shadow:0 12px 40px #143c2b08}
+.pharmacy-home .field{font-size:13px}
+.pharmacy-home .consent{font-size:12px}
+.pharmacy-home .add{font-size:13px}
+.request-tracking-card{margin-top:26px;padding:23px;border:1px solid #d7e2cc;background:#fff;border-radius:16px;max-width:380px}
+.request-tracking-card h3{font-size:19px;margin:0 0 9px;letter-spacing:-.4px}
+.request-tracking-card p{font-size:13px;margin:0 0 15px}
+.request-tracking-card a{font-size:13px;font-weight:700;color:var(--green);display:inline-flex;min-height:44px;align-items:center;gap:18px}
+.pharmacy-home .contact-grid .card{border-radius:16px}
+.pharmacy-home .visit{border-radius:20px;background:#123f32;border-color:#123f32}
+.pharmacy-home .visit-copy h2{color:#fff}
+.pharmacy-home .visit-copy .eyebrow{color:#c5dba1}
+.pharmacy-home .visit-copy>p,.pharmacy-home .visit-copy>p a{color:#d3e0d3}
+.pharmacy-home .visit-copy .btn{background:#d8eab2;border-color:#d8eab2;color:#173f32}
+.pharmacy-home .faq{padding-top:12px}
+.pharmacy-home .faq h2{font-size:32px}
+.pharmacy-home .faq details{padding:23px 0}
+.pharmacy-home footer{background:#eef2e8}
+.pharmacy-home .disclaimer{font-size:11px!important}
+@media(min-width:761px) and (max-width:1200px){
+ .pharmacy-home .hero{margin-left:4%;margin-right:4%;padding:32px;gap:28px}
+ .pharmacy-home .header-inner{gap:14px}
+ .pharmacy-home .brand .pharmacy-logo{width:170px}
+ .pharmacy-home nav{gap:12px;font-size:11px}
+ .pharmacy-home .header-actions .btn{font-size:11px;padding:12px}
+ .pharmacy-home .hero .actions{gap:16px}
+}
+@media(max-width:960px) and (min-width:761px){
+ .pharmacy-home .header-actions>.btn{display:none}
+ .pharmacy-home .hero{grid-template-columns:1fr 1fr;padding:27px;gap:24px}
+ .pharmacy-home h1{font-size:44px}
+ .pharmacy-home .hero-product-showcase{min-height:450px}
+ .pharmacy-home .quick-bar{margin-left:4%;margin-right:4%}
+}
+@media(max-width:760px){
+ .pharmacy-home .header-inner{padding:10px 5%}
+ .pharmacy-home .brand .pharmacy-logo{width:172px}
+ .pharmacy-home .header-inner>nav{font-size:15px;gap:8px;box-shadow:0 12px 20px #123f3210}
+ .pharmacy-home .header-inner>nav a{width:100%;padding:10px}
+ .pharmacy-home .hero{margin:16px 4% 12px;padding:28px 23px 23px;grid-template-columns:minmax(0,1fr);gap:28px;border-radius:22px}
+ .pharmacy-home h1{font-size:clamp(38px,10.5vw,56px);letter-spacing:-1.8px;margin:22px 0}
+ .pharmacy-home .hero-copy>.pill{font-size:8px;letter-spacing:1px}
+ .pharmacy-home .hero-copy>p{font-size:14px}
+ .pharmacy-home .hero .actions{gap:20px}
+ .pharmacy-home .hero-product-showcase{min-height:425px;aspect-ratio:1/1.2;border-radius:15px}
+ .pharmacy-home .hero-product-info{padding:16px;left:13px;right:13px}
+ .pharmacy-home .hero-product-info h2{font-size:22px}
+ .pharmacy-home .hero-product-info p{font-size:11px}
+ .pharmacy-home .hero-product-info .btn{min-height:42px}
+ .pharmacy-home .quick-bar{margin:0 5%;grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 14px;padding:25px 0}
+ .pharmacy-home .quick-bar>div{border:0;justify-content:flex-start}
+ .pharmacy-home .quick-bar b{font-size:12px}
+ .pharmacy-home .quick-bar small{font-size:10px}
+ .pharmacy-home .section{padding-top:44px;padding-bottom:44px}
+ .pharmacy-home .category-card{padding:17px 13px;border-radius:14px}
+ .pharmacy-home .category-caption h3{font-size:13px}
+ .pharmacy-home .category-caption p{font-size:11px}
+ .pharmacy-home .category-art{height:115px}
+ .pharmacy-home .circle-arrow{width:28px;height:28px}
+ .pharmacy-home .section-head>p{font-size:13px}
+ .pharmacy-home .care-banner{margin-top:28px;padding:26px}
+ .pharmacy-home .order-layout{grid-template-columns:minmax(0,1fr);gap:28px}
+ .pharmacy-home .order-layout>div:first-child{padding-top:0}
+ .pharmacy-home .order-panel{padding:22px}
+ .pharmacy-home .visit-copy{padding:30px 25px}
+ .pharmacy-home .faq h2{font-size:28px}
+ .request-tracking-card{max-width:none}
+ .pharmacy-home .mobile-dock>a{min-height:44px;display:inline-flex;align-items:center}
+}
