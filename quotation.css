@@ -1,0 +1,51 @@
+
+.quote-sheet{margin:28px 0 0;padding:32px;background:#fff;color:#244438;border:1px solid #dae4d6;border-top:5px solid #14634e;border-radius:12px;font:14px/1.6 Arial,sans-serif}
+.quote-doc-head{display:flex;justify-content:space-between;gap:24px;padding-bottom:24px;border-bottom:1px solid #d8e4d8}
+.quote-sheet .quote-logo{display:block;width:225px;max-width:100%;height:auto;margin-bottom:12px}
+.quote-sheet p{font-size:12px;line-height:1.65;margin:3px 0;color:#5d7366}
+.quote-doc-title{text-align:right;flex-shrink:0;padding-top:8px}
+.quote-doc-title small{font-size:9px;letter-spacing:1.8px;color:#718665}
+.quote-doc-title h2{font-size:32px;margin:3px 0 8px;color:#154f40;line-height:1.2}
+.quote-meta{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:15px;background:#f0f5e9;padding:18px;margin:22px 0;border-radius:9px}
+.quote-meta small{display:block;text-transform:uppercase;font-size:9px;letter-spacing:1px;margin-bottom:5px;color:#637d59}
+.quote-meta strong{display:block;font-size:12px;overflow-wrap:anywhere}
+.quote-sheet .quote-customer{margin:12px 0 20px}
+.quote-table-wrap{overflow-x:auto}
+.quote-sheet .quote-items{width:100%;border-collapse:collapse;table-layout:auto;font-size:12px}
+.quote-sheet .quote-items th{background:#14634e;color:white;padding:12px 9px;font-size:10px;text-transform:uppercase;letter-spacing:.3px;text-align:left}
+.quote-sheet .quote-items td{padding:14px 9px;border-bottom:1px solid #e1e8dd;vertical-align:top;color:#244438}
+.quote-sheet .quote-items tr:nth-child(even){background:#f6f9f2}
+.quote-sheet .quote-items th:nth-child(2),.quote-sheet .quote-items td:nth-child(2){width:40%;white-space:normal;overflow-wrap:anywhere}
+.quote-sheet .quote-items th:nth-child(n+3),.quote-sheet .quote-items td:nth-child(n+3){text-align:right;white-space:nowrap}
+.quote-sheet .quote-items td:last-child{font-weight:bold}
+.quote-totals{width:330px;max-width:100%;margin:22px 0 28px auto}
+.quote-totals>div{display:flex;justify-content:space-between;gap:12px;padding:8px 12px;font-size:12px}
+.quote-totals .quote-grand-total{margin-top:6px;background:#e8f1dd;border-radius:8px;padding:15px 12px;font-size:16px;color:#164c38}
+.quote-note{padding:16px 18px;background:#f8faf4;border-left:3px solid #8ba56e;margin:20px 0;white-space:pre-wrap}
+.quote-note small,.quote-terms small{font-size:10px;letter-spacing:1px;color:#5a774c;font-weight:bold}
+.quote-terms{padding:14px 0 24px}
+.quote-doc-foot{border-top:1px solid #c8d9bf;padding-top:18px;display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#6b805f}
+.quote-doc-foot b{font-size:9px;color:#315a3f;letter-spacing:.6px}
+.quote-download-actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.quote-download-actions p{flex-basis:100%;margin:0}
+.quote-download-actions button+button{background:#e9f0e1;color:#28523d}
+@media(max-width:600px){.quote-sheet{padding:20px 16px}.quote-doc-head{flex-direction:column;gap:14px}.quote-doc-title{text-align:left}.quote-meta{grid-template-columns:1fr 1fr}.quote-meta>div:first-child{grid-column:1/-1}.quote-doc-title h2{font-size:27px}.quote-doc-foot{flex-direction:column;gap:8px}.quote-sheet .quote-items{min-width:480px}}
+@page{size:A4 portrait;margin:12mm}
+@media print{
+ html,body.pharmacy-tracking{background:#fff!important;margin:0!important;padding:0!important}
+ body.pharmacy-tracking>header,body.pharmacy-tracking>footer,main>:not(#result),#result>:not(.quote-sheet){display:none!important}
+ body.pharmacy-tracking main{display:block!important;max-width:none!important;margin:0!important;padding:0!important}
+ body.pharmacy-tracking #result{display:block!important;overflow:visible!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:white!important}
+ #result .quote-sheet{display:block!important;margin:0!important;padding:7mm 0 0!important;border:0!important;border-top:1.5mm solid #14634e!important;border-radius:0!important;box-shadow:none!important;font-size:10pt!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .quote-doc-head{display:flex!important;flex-direction:row!important;break-inside:avoid}
+ .quote-doc-title{text-align:right!important}
+ .quote-sheet .quote-logo{width:62mm!important;height:auto!important;display:block!important}
+ .quote-meta{display:grid!important;grid-template-columns:1.6fr 1fr 1fr!important;break-inside:avoid}
+ .quote-meta>div:first-child{grid-column:auto!important}
+ .quote-table-wrap{overflow:visible!important}
+ .quote-sheet .quote-items{min-width:0!important;font-size:9pt!important;break-inside:auto!important}
+ .quote-items thead{display:table-header-group}
+ .quote-items tr,.quote-totals,.quote-note,.quote-terms,.quote-doc-foot{break-inside:avoid;page-break-inside:avoid}
+ .quote-sheet .quote-items th,.quote-sheet .quote-items td{padding:3mm 2mm!important}
+ .quote-doc-foot{display:flex!important;flex-direction:row!important;margin-top:10mm}
+}
