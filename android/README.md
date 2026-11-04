@@ -1,0 +1,41 @@
+# Faraz Pharmacy Android
+
+Android 8+ application for Faraz Pharmacy, Barikot, Swat. Application ID: `pk.farazpharmacy.app`.
+
+The app presents the live pharmacy website in native Android navigation. There is no separate order database. All submissions, photos, one-time delivery-location pins, statuses and issued quotations use the existing pharmacy service and are reviewed at the existing owner dashboard. Internet access is required.
+
+## Customer experience
+
+- Home: live pharmacy catalogue and featured products.
+- Request: existing request form and review-before-submit screen.
+- Track: private reference/access-code tracking, with quotation PDF downloads.
+- Contact: open WhatsApp or phone dialler.
+- Native image picker, foreground location permission and user-selected file saving.
+- Home and tracking use separate views so switching tabs preserves an unsubmitted request while the app remains open. Closing the app may discard unsubmitted data.
+- No advertising, background location or background notifications.
+- Only HTTPS pharmacy URLs open inside the app. External maps and contact links open the relevant phone app. Certificate errors are never bypassed.
+- Owner credentials do not ship in the app; dashboard use remains on the web.
+
+## Build the signed APK from command line
+
+Install JDK 17 and the official Android SDK platform 35 / build tools 35.0.0. Use the private release keystore backup held by the pharmacy owner. Never commit the keystore or password.
+
+```bash
+export FARAZ_ANDROID_PLATFORM=/absolute/path/to/android-sdk/platforms/android-35
+export FARAZ_ANDROID_TOOLS=/absolute/path/to/android-sdk/build-tools/35.0.0
+export FARAZ_KEYSTORE=/private/path/faraz-pharmacy-release.p12
+export FARAZ_STOREPASS_FILE=/private/path/store-password.txt
+bash build-apk.sh
+```
+
+The script compiles Java, packages resources, aligns the APK, signs with alias `faraz-pharmacy`, and verifies its signature. The output is `build/faraz-pharmacy-1.0.0.apk`.
+
+For Android Studio, open this directory, use Gradle 8.10.2 with JDK 17, and configure release signing locally through Build > Generate Signed Bundle / APK. No signing data is present in this repository.
+
+## Updates
+
+Increment `versionCode` and `versionName` in both the manifest and `app/build.gradle`, use the same release signing key, then update the public download and checksum. Android updates must keep the same application ID and signing key. Do not generate a new release key for each build.
+
+## Verification limits
+
+Compilation, APK signing, manifest inspection and bytecode verification are performed during preparation. Physical-device testing is still needed for device-specific GPS accuracy, phone photo pickers and saving files. The app is distributed directly as an APK and is not a Google Play listing.
