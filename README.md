@@ -22,6 +22,10 @@ Deploy the repository root as a static website. For GitHub Pages, select the mai
 
 ## Order behaviour
 
-Requests require pharmacy confirmation of availability, pricing, prescription requirements and delivery. No payment is collected, no stock is reserved, and no customer records are stored by this static website. Item details are passed to WhatsApp only when the customer selects Continue to WhatsApp.
+Requests require pharmacy confirmation of availability, pricing, prescription requirements and delivery. No payment is collected and no stock is reserved. Reviewed requests (name, WhatsApp number, items, collection preference and optional product photos) are sent to a separate authenticated backend, never to the public repository. Request records are stored in D1 and photos in private R2 storage. Owner access requires a GitHub token for iemfaraz with write access to faraz-pharmacy, exchanged for a 30-minute in-memory inbox session. The dashboard can search requests, view private photos, update status and save internal notes. WhatsApp conversations are not synchronised.
+
+Uploads: up to 3 JPEG/PNG/WebP photos, 5 MB each. The browser re-encodes uploads to remove metadata. Use product packaging photos; do not upload identity documents, prescriptions, faces or medical history.
+
+Backend: https://faraz-pharmacy-orders.faraznawaz2014.chatgpt.site. Public submission endpoint: POST /api/requests. Session: POST /api/session. Authenticated inbox/review: GET/PATCH /api/requests. Authenticated photos: GET /api/photo. API requests are rate limited and customer records are never committed to GitHub.
 
 Opening hours are awaiting confirmation.
