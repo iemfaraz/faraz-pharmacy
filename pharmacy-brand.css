@@ -199,3 +199,5 @@ button,a,input,select,textarea{touch-action:manipulation}
  .request-tracking-card{max-width:none}
  .pharmacy-home .mobile-dock>a{min-height:44px;display:inline-flex;align-items:center}
 }
+
+@media print{#result .quotation-brand{display:block!important;visibility:visible!important;break-inside:avoid;page-break-inside:avoid;margin:8mm 0 6mm!important;padding:0 0 5mm!important;border-bottom:1px solid #bfd0c0}#result .quotation-brand img.pharmacy-logo{display:block!important;visibility:visible!important;width:70mm!important;max-width:100%!important;height:auto!important;opacity:1!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
