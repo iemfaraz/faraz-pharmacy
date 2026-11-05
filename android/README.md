@@ -28,7 +28,7 @@ export FARAZ_STOREPASS_FILE=/private/path/store-password.txt
 bash build-apk.sh
 ```
 
-The script compiles Java, packages resources, aligns the APK, signs with alias `faraz-pharmacy`, and verifies its signature. The output is `build/faraz-pharmacy-1.1.0.apk`.
+The script compiles Java, packages resources, aligns the APK, signs with alias `faraz-pharmacy`, and verifies its signature. The output is `build/faraz-pharmacy-1.2.0.apk`.
 
 For Android Studio, open this directory, use Gradle 8.10.2 with JDK 17, and configure release signing locally through Build > Generate Signed Bundle / APK. No signing data is present in this repository.
 
@@ -43,3 +43,7 @@ Compilation, APK signing, manifest inspection and bytecode verification are perf
 ## Version 1.1.0
 
 Native home screen and support, live catalogue/category browsing, add catalogue items to the request form, icon navigation, branded loading states, refresh confirmation, improved tracking-link transfer and rotation handling. Version code 2 uses the same release key as 1.0.0.
+
+## Version 1.2.0
+
+Removed app-install/download promotions and app-sharing menu entries from customer app screens. Added catalogue search and incremental access to all matching items, reduced thumbnail memory use, and simplified customer-facing wording. Quotation PDF saving remains available. Version code 3 uses the original release signing key.
