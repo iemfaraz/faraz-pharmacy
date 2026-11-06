@@ -1,0 +1,26 @@
+html.pharmacy-android-client{--green:#007044;--ink:#124632;--line:#d5e7dc;color-scheme:light}
+html.pharmacy-android-client body{background:#f5faf7;color:var(--ink);font-family:system-ui,sans-serif}
+html.pharmacy-android-client body.faraz-app-order #order .order-panel{padding:4px!important}
+html.pharmacy-android-client .form-heading .pharmacy-logo{display:none}
+html.pharmacy-android-client .form-heading h3{font-size:26px;letter-spacing:-.6px;margin:8px 0}
+html.pharmacy-android-client input:not([type=checkbox]),html.pharmacy-android-client select,html.pharmacy-android-client textarea{font:inherit;font-size:16px;min-height:48px;border:1px solid #adc9b9;border-radius:12px;background:white;color:#173e33;padding:12px;max-width:100%}
+html.pharmacy-android-client input:focus,html.pharmacy-android-client textarea:focus{outline:3px solid #bdebd2;outline-offset:2px}
+html.pharmacy-android-client #request-photos{padding:20px 12px;border:2px dashed #8abc9e;background:#edfaf2;width:100%;min-height:95px}
+html.pharmacy-android-client #request-photos::file-selector-button{padding:12px;border:0;border-radius:10px;background:#007044;color:white;font-weight:600;margin:0 8px 8px 0}
+html.pharmacy-android-client .btn,html.pharmacy-android-client button:not(.remove){min-height:48px;border-radius:13px}
+html.pharmacy-android-client .btn:not(.light),html.pharmacy-android-client #track-button,html.pharmacy-android-client #request-messages button{background:#007044;color:white}
+html.pharmacy-android-client .item-row{background:white;border:1px solid var(--line);border-radius:16px;padding:12px;margin:14px 0;gap:8px}
+html.pharmacy-android-client .item-row .remove{min-width:44px;min-height:44px}
+html.pharmacy-android-client body.pharmacy-tracking #result,html.pharmacy-android-client #request-messages{padding:18px!important;border:1px solid var(--line);border-radius:20px!important;background:white}
+html.pharmacy-android-client #request-messages>form{padding:0;border:0;margin-bottom:0}
+html.pharmacy-android-client #request-messages h2{font-size:22px}
+html.pharmacy-android-client #request-messages>p{font-size:13px;color:#587262}
+html.pharmacy-android-client .app-progress{list-style:none;padding:4px 0;margin:20px 0}
+html.pharmacy-android-client .app-progress li{position:relative;padding:8px 8px 18px 36px;margin-left:12px;border-left:2px solid #d9e8de;color:#698073}
+html.pharmacy-android-client .app-progress li:last-child{border:0}
+html.pharmacy-android-client .app-progress li::before{content:'';position:absolute;left:-9px;top:10px;width:16px;height:16px;border-radius:50%;background:#e0e9e3;border:3px solid white;box-shadow:0 0 0 1px #c5d9cd}
+html.pharmacy-android-client .app-progress li.done{border-color:#008952;color:#00653b}
+html.pharmacy-android-client .app-progress li.done::before{background:#008952}
+html.pharmacy-android-client .app-progress li.current{font-weight:700;color:#00653b;background:#edf9f1;border-radius:0 12px 12px 0}
+html.pharmacy-android-client .app-progress li.current::before{background:#008952;box-shadow:0 0 0 2px #008952}
+@media(max-width:420px){html.pharmacy-android-client .item-row{grid-template-columns:minmax(0,1fr) 64px 44px}html.pharmacy-android-client .item-row label{min-width:0}html.pharmacy-android-client .item-row input{width:100%}}

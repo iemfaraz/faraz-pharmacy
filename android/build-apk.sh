@@ -25,6 +25,6 @@ PYZIP
 "$FARAZ_ANDROID_TOOLS/d8" --lib "$FARAZ_ANDROID_PLATFORM/android.jar" --min-api 26 --output build/dex build/classes.jar
 (cd build/dex && zip -q -u ../unsigned.apk classes.dex)
 "$FARAZ_ANDROID_TOOLS/zipalign" -f -p 4 build/unsigned.apk build/aligned.apk
-"$FARAZ_ANDROID_TOOLS/apksigner" sign --ks "$FARAZ_KEYSTORE" --ks-key-alias faraz-pharmacy --ks-pass "file:$FARAZ_STOREPASS_FILE" --out build/faraz-pharmacy-1.2.0.apk build/aligned.apk
-"$FARAZ_ANDROID_TOOLS/apksigner" verify --verbose build/faraz-pharmacy-1.2.0.apk
-sha256sum build/faraz-pharmacy-1.2.0.apk
+"$FARAZ_ANDROID_TOOLS/apksigner" sign --ks "$FARAZ_KEYSTORE" --ks-key-alias faraz-pharmacy --ks-pass "file:$FARAZ_STOREPASS_FILE" --out build/faraz-pharmacy-1.3.0.apk build/aligned.apk
+"$FARAZ_ANDROID_TOOLS/apksigner" verify --verbose build/faraz-pharmacy-1.3.0.apk
+sha256sum build/faraz-pharmacy-1.3.0.apk
