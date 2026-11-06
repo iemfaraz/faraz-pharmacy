@@ -61,3 +61,7 @@ More → Owner dashboard opens the same server-authenticated dashboard inside a 
 The website and trusted geolocation/blob origins now use https://www.farazpharmacy.com and https://farazpharmacy.com. Owner file selection supports image, PDF, XLS/XLSX and CSV based on the active form. Downloads support PDF, text and inventory CSV. TLS failures are cancelled. The release APK retains the previous signing certificate and increments versionCode to 5.
 
 Validation: Java compilation, APK signature verification and same-certificate comparison passed. Real-device UI, picker, geolocation and print testing is still required; no Android emulator/device was available in the build environment.
+
+## Version 1.5.0 (code 6)
+
+Home has a Shop & cart action. Published, available catalogue cards use Add to cart with the exact product ID. The dedicated customer WebView shares the website shopping service; its customer accounts have no staff privileges. More provides customer account and shopping order shortcuts. Guest tracking remains separate. Same release signer as 1.4.0. Build and APK signatures verified; physical-device UI, location and printing have not been tested in this environment.
