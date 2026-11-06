@@ -28,7 +28,7 @@ export FARAZ_STOREPASS_FILE=/private/path/store-password.txt
 bash build-apk.sh
 ```
 
-The script compiles Java, packages resources, aligns the APK, signs with alias `faraz-pharmacy`, and verifies its signature. The output is `build/faraz-pharmacy-1.3.0.apk`.
+The script compiles Java, packages resources, aligns the APK, signs with alias `faraz-pharmacy`, and verifies its signature. The output is `build/faraz-pharmacy-1.4.0.apk`.
 
 For Android Studio, open this directory, use Gradle 8.10.2 with JDK 17, and configure release signing locally through Build > Generate Signed Bundle / APK. No signing data is present in this repository.
 
@@ -48,8 +48,16 @@ Native home screen and support, live catalogue/category browsing, add catalogue 
 
 Removed app-install/download promotions and app-sharing menu entries from customer app screens. Added catalogue search and incremental access to all matching items, reduced thumbnail memory use, and simplified customer-facing wording. Quotation PDF saving remains available. Version code 3 uses the original release signing key.
 
-## Version 1.3.0
+## Version 1.4.0
 
 Mint and emerald home with prescription upload, four category cards, catalogue search, request and order-message shortcuts. Request and tracking screens use coordinated accessible mobile styles. Submitted requests, prescription/product photos and messages use the existing HTTPS pharmacy service; staff review them in the existing dashboard. Issued quotations and changes to their items are read from that service. Android now restores both 8-digit access codes and legacy 64-character codes when switching from Request to Orders. Customer app pages have no app-download promotions.
 
 Release verification: Java/resources compile, APK v2/v3 signatures verify, original signer matches version 1.2.0, JavaScript syntax checks pass. Physical Android testing of photo picking, location permission, request submission, quotation updates and message sending remains required. No customer requests were created during release checks.
+
+## Version 1.4 owner dashboard
+
+More → Owner dashboard opens the same server-authenticated dashboard inside a dedicated WebView. Use the owner email/password; no credentials are built into the app. Sessions stay in page memory and expire after 30 minutes. Use dashboard Log out on shared phones. Owner views enable Android FLAG_SECURE. Help includes info@farazpharmacy.com. Customer and owner WebViews are separate, and private data remains behind backend authentication.
+
+The website and trusted geolocation/blob origins now use https://www.farazpharmacy.com and https://farazpharmacy.com. Owner file selection supports image, PDF, XLS/XLSX and CSV based on the active form. Downloads support PDF, text and inventory CSV. TLS failures are cancelled. The release APK retains the previous signing certificate and increments versionCode to 5.
+
+Validation: Java compilation, APK signature verification and same-certificate comparison passed. Real-device UI, picker, geolocation and print testing is still required; no Android emulator/device was available in the build environment.
