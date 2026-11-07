@@ -1,0 +1,1 @@
+(()=>{'use strict';function route(){if(location.hash!=='#order')return;const target=new URL('request.html',location.href);target.search=location.search;target.hash='#order';location.replace(target.href)}route();addEventListener('hashchange',route)})();
