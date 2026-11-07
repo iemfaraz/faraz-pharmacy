@@ -65,3 +65,8 @@ Validation: Java compilation, APK signature verification and same-certificate co
 ## Version 1.5.0 (code 6)
 
 Home has a Shop & cart action. Published, available catalogue cards use Add to cart with the exact product ID. The dedicated customer WebView shares the website shopping service; its customer accounts have no staff privileges. More provides customer account and shopping order shortcuts. Guest tracking remains separate. Same release signer as 1.4.0. Build and APK signatures verified; physical-device UI, location and printing have not been tested in this environment.
+
+
+## Customer experience in 1.7
+
+Home / Shop / Request / My orders / Account navigation, with Help in the header. The shared website adds medicine search suggestions and spelling tolerance, account favourites and saved address text, privately linked guest requests, repeat-order review and foreground updates. Customer tokens may optionally be remembered with Android Keystore AES-GCM encryption until their existing eight-hour expiry; logout clears the vault. No background push or OTP provider is configured. Camera, location and update installation still require physical-device validation.

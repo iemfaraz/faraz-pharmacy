@@ -3,7 +3,7 @@
 if(window.parent===window&&document.documentElement.classList.contains('pharmacy-android-client')){if(location.hash==='#order'){const request=new URL('request.html',location.href);request.search=location.search;location.replace(request.href)}return;}
 const embedded=window.parent!==window&&new URLSearchParams(location.search).get('layout')==='embedded';
 const views=['home','shop','request','track','contact','app'],shopViews=['shop','cart','account','orders'];
-const pageFor={shop:'shop.html',request:'request.html',track:'track.html',app:'android-app.html?v=1.7.0'};
+const pageFor={shop:'shop.html',request:'request.html',track:'track.html',app:'android-app.html?v=1.7.1'};
 function routeFor(href){let u;try{u=new URL(href,location.href)}catch{return null}if(u.origin!==location.origin)return null;const file=u.pathname.split('/').pop();if(file==='android-app.html')return{view:'app',url:u};if(file==='shop.html')return{view:'shop',url:u};if(file==='request.html')return{view:'request',url:u};if(file==='track.html')return{view:'track',url:u};if(!file||file==='index.html')return{view:u.hash==='#contact'||u.hash==='#visit'?'contact':'home',url:u};return null}
 if(embedded){
  document.documentElement.classList.add('customer-tab-embedded');
