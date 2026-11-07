@@ -3,7 +3,7 @@
 if(window.parent===window&&document.documentElement.classList.contains('pharmacy-android-client')){if(location.hash==='#order'){const request=new URL('request.html',location.href);request.search=location.search;location.replace(request.href)}return;}
 const embedded=window.parent!==window&&new URLSearchParams(location.search).get('layout')==='embedded';
 const views=['home','shop','request','track','contact','app'],shopViews=['shop','cart','account','orders'];
-const pageFor={shop:'shop.html',request:'request.html',track:'track.html',app:'android-app.html?v=1.6.0'};
+const pageFor={shop:'shop.html',request:'request.html',track:'track.html',app:'android-app.html?v=1.7.0'};
 function routeFor(href){let u;try{u=new URL(href,location.href)}catch{return null}if(u.origin!==location.origin)return null;const file=u.pathname.split('/').pop();if(file==='android-app.html')return{view:'app',url:u};if(file==='shop.html')return{view:'shop',url:u};if(file==='request.html')return{view:'request',url:u};if(file==='track.html')return{view:'track',url:u};if(!file||file==='index.html')return{view:u.hash==='#contact'||u.hash==='#visit'?'contact':'home',url:u};return null}
 if(embedded){
  document.documentElement.classList.add('customer-tab-embedded');
@@ -40,9 +40,9 @@ function canonical(view,url){let hash='#'+view;if(view==='shop'){const p=new URL
 function setURL(view,url,push){const hash=canonical(view,url);if(location.hash!==hash)history[push?'pushState':'replaceState']({pharmacyView:view},'',location.pathname+location.search+hash)}
 function language(){for(const item of frames.values())item.frame.contentWindow?.postMessage({source:'faraz-customer-shell',type:'language'},location.origin)}
 new MutationObserver(language).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-function mark(view){for(const a of nav.querySelectorAll('a')){if(routeFor(a.href)?.view===view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}for(const item of frames.values())item.frame.hidden=item.view!==view}
+function mark(view,url){for(const a of nav.querySelectorAll('a')){if(routeFor(a.href)?.view===view&&(view!=='shop'||(new URL(a.href).searchParams.get('view')||'shop')===(url?.searchParams.get('view')||'shop')))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}for(const item of frames.values())item.frame.hidden=item.view!==view}
 function open(view,url=new URL(pageFor[view]||'./',location.href),push=true,scroll=true){
- if(!views.includes(view))view='home';active=view;document.body.dataset.customerView=view;mark(view);panel.hidden=!pageFor[view];document.title=({home:'Faraz Pharmacy | Barikot, Swat',shop:'Shop | Faraz Pharmacy',request:'Request a medicine | Faraz Pharmacy',track:'Track order | Faraz Pharmacy',contact:'Contact | Faraz Pharmacy',app:'App download | Faraz Pharmacy'})[view];setURL(view,url,push);
+ if(!views.includes(view))view='home';active=view;document.body.dataset.customerView=view;mark(view,url);panel.hidden=!pageFor[view];document.title=({home:'Faraz Pharmacy | Barikot, Swat',shop:'Shop | Faraz Pharmacy',request:'Request a medicine | Faraz Pharmacy',track:'Track order | Faraz Pharmacy',contact:'Contact | Faraz Pharmacy',app:'App download | Faraz Pharmacy'})[view];setURL(view,url,push);
  if(pageFor[view]){
   let item=frames.get(view);const clean=new URL(pageFor[view],location.href);for(const [key,value]of url.searchParams)if(['view','search','category','add'].includes(key))clean.searchParams.set(key,value);clean.searchParams.set('layout','embedded');clean.hash=url.hash;
   const navigationIntent=view==='shop'&&['search','category','add'].some(k=>url.searchParams.has(k))||view==='track'&&!!url.hash;
@@ -59,7 +59,7 @@ document.querySelector('.clean-search').addEventListener('submit',e=>{e.preventD
 addEventListener('message',e=>{if(e.origin!==location.origin||e.data?.source!=='faraz-customer-tab')return;const item=[...frames.values()].find(f=>f.frame.contentWindow===e.source);if(!item)return;
  if(e.data.type==='resize'&&Number.isFinite(e.data.height)&&e.data.height>=320&&e.data.height<=200000)item.frame.style.height=Math.ceil(e.data.height)+'px';
  if(e.data.type==='navigate'){const route=routeFor(e.data.href);if(route)open(route.view,route.url)}
- if(e.data.type==='shop-view'&&active==='shop'&&shopViews.includes(e.data.view)){const u=new URL('shop.html',location.href);u.searchParams.set('view',e.data.view);setURL('shop',u,false)}
+ if(e.data.type==='shop-view'&&active==='shop'&&shopViews.includes(e.data.view)){const u=new URL('shop.html',location.href);u.searchParams.set('view',e.data.view);setURL('shop',u,false);mark('shop',u)}
 });
 function fromLocation(scroll=false){const raw=location.hash.slice(1),[name,query='']=raw.split('?');if(name==='order'){open('request',new URL('request.html',location.href),false,scroll);return}const view=views.includes(name)?name:'home',url=new URL(pageFor[view]||'./',location.href);if(view==='shop')url.search=query;open(view,url,false,scroll)}
 addEventListener('popstate',()=>fromLocation(true));addEventListener('hashchange',()=>fromLocation(true));

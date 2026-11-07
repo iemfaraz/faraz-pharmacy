@@ -1,0 +1,1 @@
+(()=>{'use strict';try{if(!window.FarazCustomerSession)return;const raw=FarazCustomerSession.load();if(!raw)return;const d=JSON.parse(raw);if(/^cust_[a-f0-9]{64}$/.test(d.token)&&d.expires>Date.now())sessionStorage.setItem('faraz-customer-session-v1',JSON.stringify(d));else FarazCustomerSession.clear()}catch{}})();
