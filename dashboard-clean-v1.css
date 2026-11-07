@@ -1,0 +1,9 @@
+.workspace-primary{display:flex;gap:9px;overflow-x:auto;padding:10px 0;margin:20px 0 0;border-bottom:1px solid #dae3d1}.workspace-primary button{border:1px solid #d5dfce;background:#fff;color:#174f43;border-radius:8px;padding:12px 20px;white-space:nowrap;font-size:14px}.workspace-primary button[aria-selected=true]{background:#174f43;color:#fff;border-color:#174f43}.tabs{margin:12px 0 20px;padding:0;gap:8px}.tabs button{font-size:12px;background:#edf2e4;padding:9px 14px;border-radius:7px}.tabs button[aria-selected=true]{background:#d9e8b6;color:#174f43}.heading h1{font-size:36px;line-height:1.15;margin:10px 0}.heading h1 br{display:none}.heading h1 em:before{content:" "}.stats .stat{font-size:12px}.stats .stat strong{font-size:25px}#catalogue-readiness{font-size:12px;line-height:1.7}.panel h2{font-size:23px}.pharmacy-dashboard>main{padding-top:24px}.tabs:empty{display:none}#customers .panel{padding:18px}#customers h3{font-size:17px}#customers a{font-size:12px}#customers input{max-width:450px}@media(max-width:700px){.workspace-primary{position:sticky;top:0;background:#f5f6ee;z-index:9}.workspace-primary button{padding:10px 14px;font-size:12px;min-height:43px}.tabs{position:static}.heading h1{font-size:29px}}
+.tabs[data-active-group="Orders"] [data-tab]:not([data-group="Orders"]){display:none!important}
+.tabs[data-active-group="Products"] [data-tab]:not([data-group="Products"]){display:none!important}
+.tabs[data-active-group="Inventory"] [data-tab]:not([data-group="Inventory"]){display:none!important}
+.tabs[data-active-group="Customers"] [data-tab]:not([data-group="Customers"]){display:none!important}
+.tabs[data-active-group="Staff"] [data-tab]:not([data-group="Staff"]){display:none!important}
+.tabs[data-active-group="Settings"] [data-tab]:not([data-group="Settings"]){display:none!important}
+
+#workspace:not([data-active-tab="products"]):not([data-active-tab="slideshow"]):not([data-active-tab="settings"]) .public-publish-panel{display:none}
