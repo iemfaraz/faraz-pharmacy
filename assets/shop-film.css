@@ -1,0 +1,11 @@
+.shop-banner{isolation:isolate;background:#edf4e5}
+.shop-banner::after{content:none}
+.shop-banner .eyebrow{text-transform:uppercase}
+.shop-banner [lang=ur],html[lang=ur] .shop-banner [lang=en]{display:none}
+html[lang=ur] .shop-banner [lang=ur]{display:inline}
+.medicine-film{position:absolute;inset-block:0;inset-inline-end:0;width:57%;height:100%;object-fit:cover;object-position:68% center;mask-image:linear-gradient(to right,transparent,#000 25%);pointer-events:none}
+[dir=rtl] .medicine-film{mask-image:linear-gradient(to left,transparent,#000 25%)}
+.shop-banner>div{max-width:50%}
+.shop-banner .film-control{position:absolute;z-index:2;inset-inline-end:8px;bottom:8px;border:1px solid #bacbbd;border-radius:20px;background:#fff;color:#235543;padding:5px 10px;font:600 11px/1.4 system-ui;cursor:pointer}
+@media(max-width:600px){.shop-banner{display:block;padding:22px 20px 0}.shop-banner>div{max-width:100%}.medicine-film{position:relative;display:block;width:calc(100% + 40px);height:145px;margin:4px -20px 0;object-fit:contain;background:#dce9d7;mask-image:linear-gradient(transparent,#000 22%)}[dir=rtl] .medicine-film{mask-image:linear-gradient(transparent,#000 22%)}}
+.shop-banner .film-control[hidden]{display:none}
