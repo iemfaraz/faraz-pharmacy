@@ -1,5 +1,6 @@
 (()=>{
 'use strict';
+if(window.parent===window&&document.documentElement.classList.contains('pharmacy-android-client')){if(location.hash==='#order'){const request=new URL('request.html',location.href);request.search=location.search;location.replace(request.href)}return;}
 const embedded=window.parent!==window&&new URLSearchParams(location.search).get('layout')==='embedded';
 const views=['home','shop','request','track','contact','app'],shopViews=['shop','cart','account','orders'];
 const pageFor={shop:'shop.html',request:'request.html',track:'track.html',app:'android-app.html'};
