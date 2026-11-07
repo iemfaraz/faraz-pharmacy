@@ -1,0 +1,62 @@
+/* One shared customer navigation and content width. */
+.customer-tabs-active{scroll-padding-top:var(--customer-header-height,160px)}
+.customer-tabs-active .clean-header-row,.customer-tabs-active .clean-header #main-nav{max-width:1200px;padding-inline:24px}
+.customer-tabs-active .clean-header #main-nav{gap:12px;padding-block:8px;justify-content:center}
+.customer-tabs-active .clean-header #main-nav a{padding:10px 16px;border-radius:8px;line-height:1.5;min-height:40px;display:inline-flex;align-items:center;white-space:nowrap}
+.customer-tabs-active .clean-header #main-nav a[aria-current=page]{background:#e8efdf;color:#11513e}
+.customer-tabs-active main{max-width:1152px;width:calc(100% - 48px);margin:auto;min-height:560px;outline:none}
+.customer-tabs-active .pharmacy-home .hero{max-width:none;margin:26px 0 24px;padding:40px;gap:40px;grid-template-columns:1.05fr 1fr}
+.customer-tabs-active .pharmacy-home .hero h1{font-size:clamp(38px,4vw,56px)}
+.customer-tabs-active .pharmacy-home .hero-product-showcase{min-height:0;aspect-ratio:1/1.08}
+.customer-tabs-active .pharmacy-home main>.section{max-width:none;padding:34px 28px}
+body[data-customer-view]:not([data-customer-view=home]) main>#home,body[data-customer-view]:not([data-customer-view=home]) main>#new-arrivals{display:none!important}
+body[data-customer-view]:not([data-customer-view=home]):not([data-customer-view=contact]) main>#contact{display:none!important}
+body[data-customer-view=contact] main>#contact{margin:26px 0;border:1px solid #dfe7df;border-radius:18px;background:white;padding:32px}
+#customer-tab-panel{margin:0;padding:26px 0 32px;min-height:560px}
+.customer-tab-frame{display:block;width:100%;height:650px;border:0;background:#fbfcf8}
+.customer-tab-frame[hidden],#customer-tab-panel[hidden],.customer-tab-loading[hidden],.customer-tab-fallback[hidden]{display:none!important}
+.customer-tab-loading{font-size:14px;padding:12px 0}.customer-tab-fallback{display:inline-block;font-size:12px;color:#14634e;padding:8px 0}
+.customer-tab-embedded{scroll-behavior:auto;scroll-padding-top:20px}
+.customer-tab-embedded body{margin:0!important;padding:0!important;font-size:14px;background:#fbfcf8}
+.customer-tab-embedded body>header,.customer-tab-embedded body>footer,.customer-tab-embedded .store-utility,.customer-tab-embedded body>.shop-tabs,.customer-tab-embedded .skip-link,.customer-tab-embedded .request-breadcrumb,.customer-tab-embedded .breadcrumbs{display:none!important}
+.customer-tab-embedded body>main{width:100%;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important}
+.customer-tab-embedded h1{font-size:34px!important;line-height:1.2!important;letter-spacing:-1px!important}
+.customer-tab-embedded h2{font-size:25px;line-height:1.3}
+.customer-tab-embedded p{font-size:14px;line-height:1.75}
+.customer-tab-embedded input,.customer-tab-embedded select,.customer-tab-embedded textarea{font-size:14px;max-width:100%}
+.customer-tab-embedded .customer-shop main>.store-search{display:none}
+.customer-tab-embedded .customer-shop .app-shopping-actions{display:flex;justify-content:flex-end;gap:10px;margin:0 0 16px}
+.customer-tab-embedded .customer-shop .app-shopping-actions button{min-height:38px;padding:7px 14px;font-size:12px}
+.customer-tab-embedded .customer-shop .shop-banner{min-height:210px;padding:28px 32px}
+.customer-tab-embedded .customer-shop .catalogue-layout{grid-template-columns:210px minmax(0,1fr);gap:24px}
+.customer-tab-embedded .customer-shop .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+.customer-tab-embedded .customer-shop .panel{padding:26px;border-radius:16px}
+.customer-tab-embedded .pharmacy-request #order{padding:0!important;margin:0;max-width:none}
+.customer-tab-embedded .pharmacy-request .order-layout{grid-template-columns:.9fr 1.15fr;gap:32px}
+.customer-tab-embedded .pharmacy-request .order-layout>div:first-child{padding-top:8px}
+.customer-tab-embedded .pharmacy-request .order-panel{padding:26px}
+.customer-tab-embedded .pharmacy-request .order-layout>div:first-child>p{font-size:14px}
+.customer-tab-embedded .pharmacy-request .steps{padding-inline-start:24px}
+.customer-tab-embedded .pharmacy-request .steps li{font-size:13px}
+.customer-tab-embedded .pharmacy-tracking main>small{display:none}
+.customer-tab-embedded .pharmacy-tracking main>h1{margin:8px 0 14px}
+.customer-tab-embedded .pharmacy-tracking #track-form{max-width:800px;margin:22px 0;padding:26px;border-radius:16px}
+.customer-tab-embedded .pharmacy-tracking #track-form label{font-size:14px}
+.customer-tab-embedded .pharmacy-tracking #track-form small{display:block;font-size:12px;line-height:1.7}
+.customer-tab-embedded .pharmacy-tracking #result{margin:22px 0;padding:26px}
+.customer-tab-embedded .pharmacy-tracking #result .quote-sheet{font-size:14px}
+@media(max-width:760px){
+ .customer-tabs-active .clean-header-row{padding:12px 16px}.customer-tabs-active .clean-header #main-nav{display:grid!important;grid-template-columns:.8fr .8fr 1.45fr 1.1fr .9fr;justify-content:stretch;padding:6px 8px;gap:2px;overflow:visible}
+ .customer-tabs-active .clean-header #main-nav a{font-size:10px;padding:8px 4px;justify-content:center;text-align:center;white-space:normal;min-height:44px;line-height:1.35}
+ .customer-tabs-active main{width:calc(100% - 32px);min-height:360px}
+ .customer-tabs-active .pharmacy-home .hero{margin:18px 0;padding:26px 22px;grid-template-columns:minmax(0,1fr);gap:25px}
+ .customer-tabs-active .pharmacy-home .hero h1{font-size:40px}.customer-tabs-active .pharmacy-home .hero-product-showcase{aspect-ratio:1/1;min-height:0}
+ .customer-tabs-active .pharmacy-home main>.section,body[data-customer-view=contact] main>#contact{padding:26px 16px}
+ #customer-tab-panel{padding:20px 0;min-height:360px}
+ .customer-tab-embedded h1{font-size:30px!important}.customer-tab-embedded .pharmacy-request .order-layout{grid-template-columns:minmax(0,1fr);gap:20px}
+ .customer-tab-embedded .pharmacy-request .order-panel,.customer-tab-embedded .pharmacy-tracking #track-form,.customer-tab-embedded .pharmacy-tracking #result{padding:20px}
+ .customer-tab-embedded .customer-shop .catalogue-layout{grid-template-columns:minmax(0,1fr);gap:18px}
+ .customer-tab-embedded .customer-shop .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .customer-tab-embedded .customer-shop .shop-banner{min-height:185px;padding:22px}.customer-tab-embedded .customer-shop .shop-banner h1{font-size:30px!important}
+}
+@media print{.customer-tabs-active body>header,.customer-tabs-active body>footer{display:none!important}.customer-tabs-active main{max-width:none;width:100%}.customer-tab-embedded body>main{padding:0!important}}
