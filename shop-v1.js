@@ -41,39 +41,48 @@ function cartBill(lines, catalogue, delivery) {
     const price = product ? window.FarazShopCatalogue.priceValue(product) : null;
     if (price === null) {
       awaitingPrice++;
-      return name + ' × ' + line.qty + ' — price pending';
+      return [name + ' × ' + line.qty, 'Price pending'];
     }
     const unitPaise = Math.round((price + Number.EPSILON) * 100);
     const amount = unitPaise * line.qty;
     subtotalPaise += amount;
-    return name + ' · ' + line.qty + ' × ' + money(unitPaise / 100) + ' = ' + money(amount / 100);
+    return [name + ' · ' + line.qty + ' × ' + money(unitPaise / 100), money(amount / 100)];
   });
   const fee = delivery && lines.length ? DELIVERY_FEE : 0;
   const totals = [
-    'Item subtotal' + (awaitingPrice ? ' (priced items)' : '') + '  ' + money(subtotalPaise / 100),
-    (delivery ? 'Delivery' : 'Pharmacy pickup') + '  ' + money(fee),
-    (awaitingPrice ? 'Known amount' : 'Total') + '  ' + money(subtotalPaise / 100 + fee)
+    [awaitingPrice ? 'Subtotal of priced items' : 'Item subtotal', money(subtotalPaise / 100)],
+    [delivery ? 'Delivery' : 'Pharmacy pickup', money(fee)],
+    [awaitingPrice ? 'Known amount' : 'Total', money(subtotalPaise / 100 + fee)]
   ];
-  if (awaitingPrice) totals.push('Final total awaits pricing for ' + awaitingPrice + ' item(s).');
-  return [...items, '', ...totals].join('\n');
+  return {items, totals, awaitingPrice};
 }
 function updateCartEstimate() {
   const estimate = $('cart-estimate');
-  estimate.style.whiteSpace = 'pre-line';
-  estimate.style.overflowWrap = 'anywhere';
-  estimate.textContent = cart.length ? 'Your bill\n' + cartBill(cart, products, $('checkout-collection').value === 'delivery') : '';
+  estimate.replaceChildren();
+  estimate.hidden = !cart.length;
+  if (!cart.length) return;
+  const bill = cartBill(cart, products, $('checkout-collection').value === 'delivery');
+  estimate.append(node('h3', 'Your bill'));
+  const breakdown = node('dl');
+  for (const [label, value] of [...bill.items, ...bill.totals]) {
+    const row = node('div');
+    row.append(node('dt', label), node('dd', value));
+    breakdown.append(row);
+  }
+  estimate.append(breakdown);
+  if (bill.awaitingPrice) estimate.append(node('p', 'The pharmacy will confirm prices for the remaining items.'));
 }
 function renderCart(){const root=$('cart-lines');root.replaceChildren();for(const line of cart){const p=products.find(p=>p.id===line.productId),row=node('div');row.className='cart-line';const text=node('div');text.append(node('b',p?.name||'Unavailable product'),node('p',p?.pack||''));text.append(node('small',!p||p.enabled===false||p.stock==='Out of stock'?'Unavailable — remove this item':p.price===''||p.price==null?'Price on enquiry':money(p.price)+' per listed pack'));const q=node('input');q.type='number';q.min=1;q.max=99;q.value=line.qty;q.setAttribute('aria-label','Quantity for '+(p?.name||'item'));q.oninput=()=>{const n=Number(q.value);if(Number.isInteger(n)&&n>=1&&n<=99){line.qty=n;saveCart();updateCartEstimate()}};q.onchange=()=>{const n=Number(q.value);if(!Number.isInteger(n)||n<1||n>99){q.value=line.qty;return}line.qty=n;saveCart();renderCart()};const remove=node('button','Remove');remove.type='button';remove.className='secondary';remove.onclick=()=>{cart=cart.filter(i=>i!==line);saveCart();renderCart()};row.append(text,q,remove);root.append(row)}if(!cart.length)root.append(node('p','Your cart is empty. Browse products to get started.'));updateCartEstimate();if(cart.length){const shop=node('button','Continue shopping');shop.type='button';shop.onclick=()=>view('shop');root.append(shop);const clear=node('button','Clear cart');clear.type='button';clear.className='secondary';clear.onclick=()=>{if(confirm('Remove all products from your cart?')){cart=[];saveCart();renderCart()}};root.append(clear)}accountUI()}
 const collectionSelect = $('checkout-collection');
 collectionSelect.querySelector('[value="delivery"]').defaultSelected = true;
 collectionSelect.value = 'delivery';
 $('checkout-location').hidden = false;
-collectionSelect.onchange=()=>{updateCartEstimate();$('checkout-location').hidden=$('checkout-collection').value!=='delivery';pin=null;$('location-status').textContent='Enable a fresh location for this request.'};
+collectionSelect.onchange=()=>{if(pendingCheckout){pendingCheckout=null;$('checkout-review').hidden=true;accountUI()}updateCartEstimate();$('checkout-location').hidden=$('checkout-collection').value!=='delivery';pin=null;$('location-status').textContent='Enable a fresh location for this request.'};
 $('locate').onclick=()=>{if(!navigator.geolocation)return status('Location is unavailable on this device. Choose collection or contact the pharmacy.');$('locate').disabled=true;$('location-status').textContent='Waiting for your location permission…';navigator.geolocation.getCurrentPosition(p=>{pin={lat:p.coords.latitude,lng:p.coords.longitude,accuracy:p.coords.accuracy,capturedAt:Date.now(),consent:true};$('location-status').textContent='Location captured. Accuracy approximately '+Math.round(pin.accuracy)+' m. It will be sent only when you confirm the order.';$('locate').disabled=false},()=>{$('location-status').textContent='Location was not shared. Try again or choose collection.';$('locate').disabled=false},{enableHighAccuracy:true,timeout:20000,maximumAge:0})};
-$('checkout-form').onsubmit=e=>{e.preventDefault();if(!customer)return view('account');if(!cart.length)return status('Add products to your cart.');if(cart.some(i=>{const p=products.find(p=>p.id===i.productId);return!p||p.enabled===false||p.stock==='Out of stock'}))return status('Remove unavailable items from your cart before checkout.');const delivery=$('checkout-collection').value==='delivery';if(delivery&&(!pin||Date.now()-pin.capturedAt>1800000||!$('checkout-address').value.trim()))return status('Enter the delivery address and enable a fresh delivery location.');pendingCheckout={operationId:crypto.randomUUID(),items:cart.map(i=>({...i})),name:$('checkout-name').value.trim(),phone:$('checkout-phone').value.trim(),notes:$('checkout-notes').value.trim(),collection:delivery?'delivery':'collect',delivery:delivery?{...pin,address:$('checkout-address').value.trim()}:null,consent:true};$('checkout-summary').textContent=pendingCheckout.name+'\n'+pendingCheckout.phone+'\n\n'+(delivery?'Delivery request: '+pendingCheckout.delivery.address:'Collect from the pharmacy')+'\n'+$('cart-estimate').textContent;$('checkout-form').hidden=true;$('checkout-review').hidden=false;$('checkout-review').scrollIntoView({block:'start',behavior:'smooth'})};
+$('checkout-form').onsubmit=e=>{e.preventDefault();if(!customer)return view('account');if(!cart.length)return status('Add products to your cart.');if(cart.some(i=>{const p=products.find(p=>p.id===i.productId);return!p||p.enabled===false||p.stock==='Out of stock'}))return status('Remove unavailable items from your cart before checkout.');const delivery=$('checkout-collection').value==='delivery';if(delivery&&(!pin||Date.now()-pin.capturedAt>1800000||!$('checkout-address').value.trim()))return status('Enter the delivery address and enable a fresh delivery location.');pendingCheckout={operationId:crypto.randomUUID(),items:cart.map(i=>({...i})),name:$('checkout-name').value.trim(),phone:$('checkout-phone').value.trim(),notes:$('checkout-notes').value.trim(),collection:delivery?'delivery':'collect',delivery:delivery?{...pin,address:$('checkout-address').value.trim()}:null,consent:true};$('checkout-summary').textContent=pendingCheckout.name+'\n'+pendingCheckout.phone+'\n\n'+(delivery?'Delivery request: '+pendingCheckout.delivery.address:'Collect from the pharmacy')+'\n'+[...$('cart-estimate').querySelectorAll('dl > div')].map(row=>row.firstChild.textContent+' — '+row.lastChild.textContent).join('\n');$('checkout-form').hidden=true;$('checkout-review').hidden=false;$('checkout-review').scrollIntoView({block:'start',behavior:'smooth'})};
 $('edit-checkout').onclick=()=>{if(checkoutBusy)return;$('checkout-review').hidden=true;$('checkout-form').hidden=false;pendingCheckout=null};
 async function finishOrder(d){cart=[];saveCart();pendingCheckout=null;$('checkout-review').hidden=true;$('checkout-form').reset();status('Request '+d.reference+' submitted. The pharmacy will review it.');page=0;view('orders');await showOrder(d.id)}
-$('place-order').onclick=async()=>{if(!pendingCheckout||checkoutBusy)return;checkoutBusy=true;$('place-order').disabled=true;$('edit-checkout').disabled=true;try{const d=await api('/api/customer/checkout','POST',pendingCheckout);await finishOrder(d)}catch(e){status(e.message+' Check My orders before starting another checkout.');try{if(pendingCheckout){const d=await api('/api/customer/order?id='+encodeURIComponent(pendingCheckout.operationId));await finishOrder(d)}}catch{}}finally{checkoutBusy=false;$('place-order').disabled=false;$('edit-checkout').disabled=false}};
+$('place-order').onclick=async()=>{if(!pendingCheckout||checkoutBusy)return;checkoutBusy=true;collectionSelect.disabled=true;$('place-order').disabled=true;$('edit-checkout').disabled=true;try{const d=await api('/api/customer/checkout','POST',pendingCheckout);await finishOrder(d)}catch(e){status(e.message+' Check My orders before starting another checkout.');try{if(pendingCheckout){const d=await api('/api/customer/order?id='+encodeURIComponent(pendingCheckout.operationId));await finishOrder(d)}}catch{}}finally{checkoutBusy=false;collectionSelect.disabled=false;$('place-order').disabled=false;$('edit-checkout').disabled=false}};
 function showRecovery(code){$('customer-recovery-code').textContent=code;$('recovery-result').hidden=false}
 $('copy-recovery').onclick=async()=>{try{await navigator.clipboard.writeText($('customer-recovery-code').textContent);status('Recovery code copied. Store it privately.')}catch{status('Copy the displayed recovery code manually and store it privately.')}};$('hide-recovery').onclick=()=>{$('customer-recovery-code').textContent='';$('recovery-result').hidden=true};
 $('customer-login').onsubmit=async e=>{e.preventDefault();const b=e.submitter,p=$('login-password').value;$('login-password').value='';b.disabled=true;try{setSession(await api('/api/customer/login','POST',{email:$('login-email').value,password:p}));status('Signed in to your customer account.');view(cart.length?'cart':'orders')}catch(e){status(e.message)}finally{b.disabled=false}};
