@@ -10,5 +10,5 @@ document.head.append(style);
 // Keep customer app styling separate from the public storefront.
 (()=>{
  if(!document.documentElement.classList.contains('pharmacy-android-client'))return;
- const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('android-client.css?v=3',document.currentScript.src).href;document.head.append(link);
+ const link=document.createElement('link');link.rel='stylesheet';link.href=new URL('android-client.css?v=4',document.currentScript.src).href;document.head.append(link);
 })();

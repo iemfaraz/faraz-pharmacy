@@ -36,7 +36,7 @@ const loading=document.createElement('p');loading.className='customer-tab-loadin
 const fallback=document.createElement('a');fallback.className='customer-tab-fallback';fallback.textContent='Open this page directly';fallback.hidden=true;
 panel.append(loading,fallback);main.append(panel);
 function offset(){document.documentElement.style.setProperty('--customer-header-height',Math.ceil(header.getBoundingClientRect().height)+'px')}new ResizeObserver(offset).observe(header);offset();
-function canonical(view,url){let hash='#'+view;if(view==='shop'){const p=new URLSearchParams();for(const key of ['view','search','category'])if(url.searchParams.has(key))p.set(key,url.searchParams.get(key).slice(0,150));if(p.size)hash+='?'+p.toString()}return hash}
+function canonical(view,url){let hash='#'+view;if(view==='shop'){const p=new URLSearchParams();for(const key of ['view','search','category','form'])if(url.searchParams.has(key))p.set(key,url.searchParams.get(key).slice(0,150));if(p.size)hash+='?'+p.toString()}return hash}
 function setURL(view,url,push){const hash=canonical(view,url);if(location.hash!==hash)history[push?'pushState':'replaceState']({pharmacyView:view},'',location.pathname+location.search+hash)}
 function language(){for(const item of frames.values())item.frame.contentWindow?.postMessage({source:'faraz-customer-shell',type:'language'},location.origin)}
 new MutationObserver(language).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
@@ -44,8 +44,8 @@ function mark(view,url){for(const a of nav.querySelectorAll('a')){if(routeFor(a.
 function open(view,url=new URL(pageFor[view]||'./',location.href),push=true,scroll=true){
  if(!views.includes(view))view='home';active=view;document.body.dataset.customerView=view;mark(view,url);panel.hidden=!pageFor[view];document.title=({home:'Faraz Pharmacy | Barikot, Swat',shop:'Shop | Faraz Pharmacy',request:'Request a medicine | Faraz Pharmacy',track:'Track order | Faraz Pharmacy',contact:'Contact | Faraz Pharmacy',app:'App download | Faraz Pharmacy'})[view];setURL(view,url,push);
  if(pageFor[view]){
-  let item=frames.get(view);const clean=new URL(pageFor[view],location.href);for(const [key,value]of url.searchParams)if(['view','search','category','add'].includes(key))clean.searchParams.set(key,value);clean.searchParams.set('layout','embedded');clean.hash=url.hash;
-  const navigationIntent=view==='shop'&&['search','category','add'].some(k=>url.searchParams.has(k))||view==='track'&&!!url.hash;
+  let item=frames.get(view);const clean=new URL(pageFor[view],location.href);for(const [key,value]of url.searchParams)if(['view','search','category','form','mode','add'].includes(key))clean.searchParams.set(key,value);clean.searchParams.set('layout','embedded');clean.hash=url.hash;
+  const navigationIntent=view==='shop'&&['search','category','form','add'].some(k=>url.searchParams.has(k))||view==='request'&&url.searchParams.has('mode')||view==='track'&&!!url.hash;
   if(!item){const frame=document.createElement('iframe');frame.className='customer-tab-frame';frame.title=({shop:'Shop, cart and customer account',request:'Request a medicine',track:'Track your pharmacy request',app:'Download the Faraz Pharmacy Android app'})[view];frame.setAttribute('allow','geolocation '+location.origin);frame.setAttribute('scrolling','no');frame.referrerPolicy='same-origin';item={frame,view,loaded:false,src:''};frames.set(view,item);panel.append(frame);frame.addEventListener('load',()=>{item.loaded=true;if(active===view){loading.hidden=true;fallback.hidden=true}language()});}
   item.frame.hidden=false;
   if(!item.src||navigationIntent&&item.src!==clean.href){item.loaded=false;item.src=clean.href;item.frame.src=clean.href;}
