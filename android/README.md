@@ -70,3 +70,19 @@ Home has a Shop & cart action. Published, available catalogue cards use Add to c
 ## Customer experience in 1.7
 
 Home / Shop / Request / My orders / Account navigation, with Help in the header. The shared website adds medicine search suggestions and spelling tolerance, account favourites and saved address text, privately linked guest requests, repeat-order review and foreground updates. Customer tokens may optionally be remembered with Android Keystore AES-GCM encryption until their existing eight-hour expiry; logout clears the vault. No background push or OTP provider is configured. Camera, location and update installation still require physical-device validation.
+
+## Version 1.8.0 (code 9)
+
+Redesigned, professional home screen: deep-green header with logo, location and an English / اردو toggle; catalogue search; "Have a prescription?" upload banner; Browse by form (Tablets, Suspensions, Creams, Drops); and a Track a request card. The bottom bar is now Home / Shop / Requests. Request a medicine, Customer account, Help & contact and the staff dashboard remain in the More menu. The Urdu toggle switches the website screens and the native home (right-to-left layout). The Home tab is now native and no longer loads the website homepage. Same release signer; versionCode 9.
+
+Website and app share one design. The public site (www.farazpharmacy.com) has the same start section on its home page (`home-app-v3.js` / `.css`), with the same artwork, palette and Urdu wording. The app's Home tiles open the same links the website uses:
+
+- Tablets / Suspensions / Creams: `shop.html?category=Medicines&form=<Form>`
+- Drops: `shop.html?search=drops`
+- Upload prescription: `request.html?mode=prescription` (opens on the prescription-photo choice)
+
+The website must be deployed before the app is released, because the app loads its Shop, Request and Track screens from www.farazpharmacy.com.
+
+Publishing a release: build with `build-apk.sh`, then from the repository root run `python3 android/publish-apk.py android/build/faraz-pharmacy-1.8.0.apk 1.8.0`. It copies the APK to `downloads/`, writes the SHA-256 file and updates the download page's link, version, size and checksum.
+
+Verification: Java syntax parsed and resource references cross-checked; website flows (form filter, prescription mode, Urdu, in-app WebView loading) tested in a browser against a mocked catalogue. A full Android compile, APK signing and on-device UI testing are still required before publishing.

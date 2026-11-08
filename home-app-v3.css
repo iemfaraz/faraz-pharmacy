@@ -1,0 +1,80 @@
+/* Faraz Pharmacy website home, app style (v3). Palette and layout mirror the Android app. */
+:root{--fp-deep:#084a36;--fp-mid:#0b6a4c;--fp-mint:#ddefe5;--fp-cream:#faf7f2;--fp-line:#d4d8d0;--fp-ink:#084a36;--fp-muted:#4a6256}
+html body.pharmacy-home{background:var(--fp-cream)}
+/* Header */
+html body.pharmacy-home .clean-header{background:var(--fp-deep);border-bottom:0;box-shadow:0 2px 14px #084a3633}
+html body.pharmacy-home .clean-header-row{padding-top:14px;padding-bottom:14px}
+.brand-app{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none;flex-shrink:0}
+.brand-app img{display:none!important}
+.brand-mark{display:block;width:48px;height:48px;flex-shrink:0}.brand-mark svg{width:100%;height:100%;display:block}
+.brand-text{display:flex;flex-direction:column;border-inline-start:1px solid #ffffff59;padding-inline-start:12px;line-height:1.3}
+.brand-text b{font-size:20px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;color:#fff}
+.brand-text small{font-size:13px;color:#ffffffeb;display:flex;align-items:center;gap:4px}
+.brand-pin{display:inline-block;width:13px;height:13px}.brand-pin svg{width:100%;height:100%;display:block}
+html body.pharmacy-home .clean-search{background:#fff;border:0;border-radius:14px;max-width:560px}
+html body.pharmacy-home .clean-search input{font-size:15px;color:#173f32;padding:13px 16px}
+html body.pharmacy-home .clean-search button{background:var(--fp-mid);font-size:13px;font-weight:600;padding:10px 20px}
+html body.pharmacy-home .clean-header .header-actions a{color:#fff;font-size:13px;font-weight:500}
+html body.pharmacy-home .clean-header .header-actions b{background:#fff;color:var(--fp-deep)}
+html body.pharmacy-home .clean-header .language-control{background:#fff!important;color:var(--fp-deep)!important;border:0!important;border-radius:22px!important;font-weight:700!important}
+html body.pharmacy-home .clean-header #main-nav{border-top:1px solid #ffffff26}
+html body.pharmacy-home .clean-header #main-nav a{color:#ffffffe0}
+html body.pharmacy-home .clean-header #main-nav a:hover{color:#fff}
+html body.pharmacy-home .clean-header #main-nav a[aria-current=page]{background:#fff;color:var(--fp-deep)}
+html body.pharmacy-home .clean-header a:focus-visible,html body.pharmacy-home .clean-header button:focus-visible{outline:3px solid #bdebd2;outline-offset:2px}
+/* App-style start section */
+.home-app{max-width:1152px;margin:0 auto;padding:22px 0 6px}
+.home-app a{text-decoration:none}
+.home-app a:focus-visible{outline:3px solid var(--fp-mid);outline-offset:3px}
+.home-app-banner{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.9fr);align-items:center;gap:8px;border-radius:28px;background:linear-gradient(100deg,#bfe4d0,#e2f4eb);padding:38px 24px 38px 46px;overflow:hidden}
+.home-app-banner h2{font-size:clamp(28px,4vw,46px);line-height:1.08;font-weight:700;letter-spacing:-1.2px;color:var(--fp-ink);margin:0 0 12px;max-width:11em}
+.home-app-banner p{font-size:clamp(14px,1.6vw,18px);line-height:1.6;color:var(--fp-muted);margin:0 0 24px;max-width:26em}
+.home-app-upload{display:inline-flex;align-items:center;gap:10px;background:var(--fp-deep);color:#fff;border-radius:16px;padding:0 24px;min-height:54px;font-weight:700;font-size:16px;box-shadow:0 8px 20px #084a3626;transition:transform .15s,box-shadow .15s}
+.home-app-upload:hover{transform:translateY(-1px);box-shadow:0 12px 26px #084a3633}
+.home-app-icon{display:block;width:22px;height:22px}.home-app-icon svg{width:100%;height:100%;display:block}
+.home-app-art{display:block;justify-self:center;width:min(100%,230px)}.home-app-art svg{width:100%;height:auto;display:block}
+.home-app-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:34px 0 16px}
+.home-app-head h2{font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:-.6px;color:var(--fp-ink);margin:0}
+.home-app-all{font-size:14px;font-weight:600;color:var(--fp-mid)}
+.home-app-all:hover{text-decoration:underline!important}
+.home-app-forms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-app-form{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--fp-mint);border-radius:22px;padding:22px 10px 18px;color:var(--fp-ink);font-weight:700;font-size:16px;text-align:center;transition:transform .15s,box-shadow .15s}
+.home-app-form:hover{transform:translateY(-3px);box-shadow:0 14px 28px #084a3622}
+.home-app-form-art{display:block;width:92px;height:92px}.home-app-form-art svg{width:100%;height:100%;display:block}
+.home-app-track{display:flex;align-items:center;gap:18px;margin-top:26px;border:1px solid var(--fp-line);border-radius:22px;padding:22px 24px;background:#fcfaf7;color:var(--fp-ink);transition:box-shadow .15s}
+.home-app-track:hover{box-shadow:0 10px 24px #084a3618}
+.home-app-clip{display:block;width:46px;height:46px;flex-shrink:0}.home-app-clip svg{width:100%;height:100%;display:block}
+.home-app-track-text{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.home-app-track-text strong{font-size:22px;font-weight:700;letter-spacing:-.3px}
+.home-app-track-text span{font-size:15px;color:var(--fp-muted)}
+.home-app-chevron{display:block;width:26px;height:26px;flex-shrink:0}.home-app-chevron svg{width:100%;height:100%;display:block}
+[dir=rtl] .home-app-chevron{transform:scaleX(-1)}
+[dir=rtl] .home-app-banner{background:linear-gradient(260deg,#bfe4d0,#e2f4eb);padding:38px 46px 38px 24px}
+/* The old hero becomes a light product / video spotlight under the new sections. */
+html body.pharmacy-home .home-quick-actions{display:none}
+html body.pharmacy-home main>#home-spotlight.hero{display:block;max-width:none;margin:10px 0 0;padding:14px 0 0;background:none;border-radius:0;overflow:visible}
+html body.pharmacy-home main>#home-spotlight .hero-copy{display:none}
+html body.pharmacy-home main>#home-spotlight .hero-visual{max-width:560px;margin:0 auto}
+body[data-customer-view]:not([data-customer-view=home]) main>#home-spotlight{display:none!important}
+.home-app{scroll-margin-top:600px}
+/* Other tabs (shop, request, track, contact, app) must not show the start section. */
+body[data-customer-view]:not([data-customer-view=home]) .home-app{display:none!important}
+@media(max-width:700px){
+ .brand-mark{width:42px;height:42px}.brand-text b{font-size:17px}.brand-text small{font-size:12px}
+ .home-app{padding-top:16px}
+ .home-app-banner{grid-template-columns:minmax(0,1.55fr) minmax(0,.8fr);border-radius:24px;padding:24px 0 24px 22px}
+ [dir=rtl] .home-app-banner{padding:24px 22px 24px 0}
+ .home-app-banner h2{font-size:26px;letter-spacing:-.8px}
+ .home-app-banner p{font-size:14px;margin-bottom:18px}
+ .home-app-upload{min-height:50px;padding:0 16px;font-size:15px;border-radius:15px}
+ .home-app-art{width:118px;margin-inline-start:-6px}
+ .home-app-head{margin:26px 0 12px}
+ .home-app-forms{gap:8px}
+ .home-app-form{border-radius:18px;padding:14px 4px 12px;font-size:13px;gap:6px}
+ .home-app-form-art{width:60px;height:60px}
+ .home-app-track{gap:14px;padding:18px 16px;margin-top:20px;border-radius:20px}
+ .home-app-track-text strong{font-size:19px}.home-app-track-text span{font-size:14px}
+ .home-app-clip{width:40px;height:40px}
+}
+@media(max-width:360px){.home-app-form{font-size:12px}.home-app-banner h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.home-app-upload,.home-app-form,.home-app-track{transition:none}.home-app-form:hover,.home-app-upload:hover{transform:none}}
