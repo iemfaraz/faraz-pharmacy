@@ -1,0 +1,27 @@
+# Core OCR stack — versions pinned together; do not upgrade one without the other
+paddlepaddle==2.6.2
+paddleocr==2.8.1
+
+# Web / UI
+fastapi==0.111.0
+uvicorn==0.30.1
+streamlit==1.36.0
+python-multipart==0.0.9
+
+# Image processing
+opencv-python-headless==4.10.0.84
+pillow==10.4.0
+
+# PDF handling
+pymupdf==1.24.7
+
+# Data / DB / export
+pandas==2.2.2
+openpyxl==3.1.5
+sqlalchemy==2.0.31
+
+# Parsing helpers
+python-dateutil==2.9.0.post0
+
+# Development
+pytest==8.2.2
