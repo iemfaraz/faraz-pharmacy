@@ -1,0 +1,23 @@
+# Environments
+.venv/
+venv/
+.env
+
+# Runtime data
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+logs/
+Antropic API.txt 
